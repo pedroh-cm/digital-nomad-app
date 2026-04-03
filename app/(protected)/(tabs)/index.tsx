@@ -1,5 +1,6 @@
-import { Box } from "@/src/components/Box";
 import { CityCard } from "@/src/components/CityCard";
+import { Icon } from "@/src/components/Icon";
+import { Screen } from "@/src/components/Screen";
 import { cityPreviewList } from "@/src/data/cities";
 import { CityPreview } from "@/src/types";
 import { FlatList, ListRenderItemInfo } from "react-native";
@@ -10,13 +11,9 @@ export default function HomeScreen() {
   }
 
   return (
-    <Box
-      flex={1}
-      justifyContent="center"
-      alignItems="center"
-      bg="cardPrimaryBackground"
-    >
+    <Screen>
+      <Icon name="Chevron-down" size={24} color="gray2" />
       <FlatList data={cityPreviewList} renderItem={renderItem} />
-    </Box>
+    </Screen>
   );
 }
