@@ -1,16 +1,22 @@
-import { Text, View } from "react-native";
+import { Box } from "@/src/components/Box";
+import { CityCard } from "@/src/components/CityCard";
+import { cityPreviewList } from "@/src/data/cities";
+import { CityPreview } from "@/src/types";
+import { FlatList, ListRenderItemInfo } from "react-native";
 
 export default function HomeScreen() {
+  function renderItem({ item }: ListRenderItemInfo<CityPreview>) {
+    return <CityCard cityPreview={item} />;
+  }
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f0f0f0",
-      }}
+    <Box
+      flex={1}
+      justifyContent="center"
+      alignItems="center"
+      bg="cardPrimaryBackground"
     >
-      <Text>Welcome to the Home Screen!</Text>
-    </View>
+      <FlatList data={cityPreviewList} renderItem={renderItem} />
+    </Box>
   );
 }
